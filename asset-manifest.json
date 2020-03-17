@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/react-portfolio/static/css/main.9c9d53cd.chunk.css",
-    "main.js": "/react-portfolio/static/js/main.c3a8dc41.chunk.js",
-    "main.js.map": "/react-portfolio/static/js/main.c3a8dc41.chunk.js.map",
+    "main.js": "/react-portfolio/static/js/main.a25feec2.chunk.js",
+    "main.js.map": "/react-portfolio/static/js/main.a25feec2.chunk.js.map",
     "runtime-main.js": "/react-portfolio/static/js/runtime-main.fcfd7c4a.js",
     "runtime-main.js.map": "/react-portfolio/static/js/runtime-main.fcfd7c4a.js.map",
     "static/css/2.423eb98b.chunk.css": "/react-portfolio/static/css/2.423eb98b.chunk.css",
-    "static/js/2.fb71e367.chunk.js": "/react-portfolio/static/js/2.fb71e367.chunk.js",
-    "static/js/2.fb71e367.chunk.js.map": "/react-portfolio/static/js/2.fb71e367.chunk.js.map",
+    "static/js/2.ce89999a.chunk.js": "/react-portfolio/static/js/2.ce89999a.chunk.js",
+    "static/js/2.ce89999a.chunk.js.map": "/react-portfolio/static/js/2.ce89999a.chunk.js.map",
     "index.html": "/react-portfolio/index.html",
-    "precache-manifest.7f36e6239f3e62c7cf3cd96408e71a08.js": "/react-portfolio/precache-manifest.7f36e6239f3e62c7cf3cd96408e71a08.js",
+    "precache-manifest.ad478423b11f7084c96c8f9bec134cb2.js": "/react-portfolio/precache-manifest.ad478423b11f7084c96c8f9bec134cb2.js",
     "service-worker.js": "/react-portfolio/service-worker.js",
     "static/css/2.423eb98b.chunk.css.map": "/react-portfolio/static/css/2.423eb98b.chunk.css.map",
     "static/css/main.9c9d53cd.chunk.css.map": "/react-portfolio/static/css/main.9c9d53cd.chunk.css.map",
-    "static/js/2.fb71e367.chunk.js.LICENSE.txt": "/react-portfolio/static/js/2.fb71e367.chunk.js.LICENSE.txt",
+    "static/js/2.ce89999a.chunk.js.LICENSE.txt": "/react-portfolio/static/js/2.ce89999a.chunk.js.LICENSE.txt",
     "static/media/style.css": "/react-portfolio/static/media/testimonial-bg.4161bdd2.png",
     "static/media/all.css": "/react-portfolio/static/media/fa-solid-900.cdfec5cf.woff",
     "static/media/themify-icons.css": "/react-portfolio/static/media/themify.e23a7dca.ttf"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.fcfd7c4a.js",
     "static/css/2.423eb98b.chunk.css",
-    "static/js/2.fb71e367.chunk.js",
+    "static/js/2.ce89999a.chunk.js",
     "static/css/main.9c9d53cd.chunk.css",
-    "static/js/main.c3a8dc41.chunk.js"
+    "static/js/main.a25feec2.chunk.js"
   ]
 }
