@@ -1,9 +1,51 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Nav, Navbar, NavItem, NavLink } from "reactstrap";
+import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import routes from "../../routes.js";
+import firebase from "../../firebase.js";
+import "firebase/firestore";
+import { useUserContext } from "../../contexts/user.context.js";
 
 function Footer() {
   const year = new Date().getFullYear();
+  const [isLoading, setIsLoading] = useState(true);
+  const [socialMedia, setSocialMedia] = useState({});
+
+  const { userId } = useUserContext();
+
+  useEffect(() => {
+    const userRef = firebase
+      .firestore()
+      .collection("users")
+      .doc(userId);
+    userRef
+      .get()
+      .then(snapshot => {
+        if (snapshot) {
+          setSocialMedia(snapshot.data().socialMedia);
+        }
+      })
+      .then(() => setIsLoading(false))
+      .catch(error => console.log(error));
+  }, [userId]);
+
+  const createLinks = routes => {
+    return routes.map((route, key) => {
+      if (route.visible) {
+        return (
+          <NavItem key={key}>
+            <NavLink to={route.path} tag={NavLinkRRD} className="text-white">
+              {route.name}
+            </NavLink>
+          </NavItem>
+        );
+      } else {
+        return null;
+      }
+    });
+  };
+
   return (
     <footer className="footer_area">
       <Container>
@@ -18,74 +60,63 @@ function Footer() {
                   />
                 </Link>
                 <div className="d-lg-block d-none">
-                  <nav className="navbar navbar-expand-lg navbar-light justify-content-center">
+                  <Navbar light expand="lg" className="justify-content-center">
                     <div className="collapse navbar-collapse offset">
-                      <ul className="nav navbar-nav menu_nav mx-auto">
-                        <li className="nav-item">
-                          <Link className="nav-link text-white" to="/">
-                            Home
-                          </Link>
-                        </li>
-                        <li className="nav-item">
-                          <a className="nav-link text-white" href="about.html">
-                            About
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a
-                            className="nav-link text-white"
-                            href="portfolio.html"
-                          >
-                            Portfolio
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a className="nav-link text-white" href="blog.html">
-                            Blog
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a
-                            className="nav-link text-white"
-                            href="services.html"
-                          >
-                            Services
-                          </a>
-                        </li>
-                      </ul>
+                      <Nav className="navbar-nav menu_nav mx-auto">
+                        {createLinks(routes)}
+                      </Nav>
                     </div>
-                  </nav>
+                  </Navbar>
                 </div>
               </div>
               <div className="footer_social mt-lg-0 mt-4">
-                <a
-                  href="https://www.facebook.com/albert.prawono"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a
-                  href="https://twitter.com/albertxto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/albert-p-58156413b"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-linkedin"></i>
-                </a>
-                <a
-                  href="https://github.com/albertxto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-github"></i>
-                </a>
+                {isLoading ? (
+                  <>
+                    <span className="mr-3">
+                      <Skeleton circle={true} height={42} width={42} />
+                    </span>
+                    <span className="mr-3">
+                      <Skeleton circle={true} height={42} width={42} />
+                    </span>
+                    <span className="mr-3">
+                      <Skeleton circle={true} height={42} width={42} />
+                    </span>
+                    <span>
+                      <Skeleton circle={true} height={42} width={42} />
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href={socialMedia.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-facebook-f"></i>
+                    </a>
+                    <a
+                      href={socialMedia.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-twitter"></i>
+                    </a>
+                    <a
+                      href={socialMedia.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-linkedin"></i>
+                    </a>
+                    <a
+                      href={socialMedia.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-github"></i>
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           </Col>
