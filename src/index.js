@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
-import "@icon/themify-icons/themify-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "./assets/css/themify-icons.css";
 import "./assets/css/style.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
